@@ -1,0 +1,39 @@
+@import './var.scss';
+@import './mixins.scss';
+
+/* header */
+.pin-header {
+  min-height: 65px;
+  padding: 0 0.8rem;
+  border-bottom: 1px solid $primary-color-light;
+  .navmenu {
+    max-width: 20rem;
+  }
+  &__brand {
+    max-width: 4rem;
+  }
+  &__search {
+    .input-group {
+      width: 100%;
+    }
+    .btn, .form-input {
+      background: $primary-color-light;
+      border: none;
+      border-radius: 4px;
+      &:focus {
+        box-shadow: none;
+      }
+    }
+    input {
+      color: #555;
+      &::placeholder {
+        color: #555;
+      }
+    }
+  }
+  &__menu {
+    ul {
+      position: absolute;
+    }
+  }
+}

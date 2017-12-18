@@ -1,0 +1,76 @@
+@import './var.scss';
+@import './mixins.scss';
+
+/* common */
+.pin-container {
+  padding: 0;
+}
+
+/* content */
+.pin-card-item {
+  display: block;
+  border-radius: 8px;
+  z-index: 2;
+  &:hover {
+    text-decoration: none;
+  }
+}
+.pin-card__wrap {
+  &::after {
+    pointer-events: none;
+    @include cover-block;
+    content: " ";
+    background: rgba(0, 0, 0, .1);
+    border-radius: 8px;
+  }
+  &:hover {
+    box-sizing: border-box;
+    position: relative;
+    cursor: zoom-in;
+    margin: -8px;
+    padding: 8px;
+  }
+}
+
+.pin-card__image-wrap {
+  position: relative;
+  &.is-fade{
+    .pin-card__overlay {
+      @include cover-block;
+      overflow: hidden;
+    }
+    .pin-card__overlay-dim {
+      @include cover-block;
+      background-color: #000;
+      border-radius: 6px;
+      opacity: .1;
+    }
+    .pin-card__overlay-gradient {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      height: 100px;
+      border-radius: 0 0 6px 6px;
+      background-color: rgba(0, 0, 0, 0.5);
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.5));
+    }
+  }
+}
+.pin-card__link {
+  display: block;
+}
+.pin-card__image {
+  display: block;
+  border-radius: 8px;
+
+}
+.pin-card__image-meta {
+  span {
+    display: block;
+    overflow: hidden;
+    margin-right: 24px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+}
