@@ -1,0 +1,123 @@
+@keyframes scrollBgGridLinks {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-300px);
+  }
+}
+.pin-signup {
+  height: 100vh;
+}
+.pin-signup__overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,.5);
+}
+.pin-signup__back-image {
+  position: fixed;
+  box-sizing: content-box;
+  height: 100%;
+  width: 100%;
+  padding-bottom: 300px;
+  background-color: #000;
+  background-image: url(/static/bg.jpg);
+  background-position: 0 0;
+  background-size:  cover;
+  animation: scrollBgGridLinks 35s linear;
+  animation-fill-mode: forwards;
+}
+.pin-signup__container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -266px;
+  transform: translateX(-50%);
+  width: 400px;
+  min-height: 533px;
+  border-radius: 8px;
+  background-color: #fff;
+}
+.pin-signup__header {
+  position: relative;
+  width: 55px;
+  height: 55px;
+  margin: 30px auto 0;
+}
+.pin-signup__title {
+  margin: 5px 26px 26px;
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  color: #555;
+}
+.pin-signup__subtitle {
+  margin: -25px 0 20px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ccc;
+}
+.pin-signup__form {
+  position: relative;
+  width: 268px;
+  margin: 0 auto;
+  text-align: center;
+  fieldset {
+    margin-bottom:16px;
+  }
+  input {
+    width: 100%;
+    padding: 10px 14px;
+    box-sizing: border-box;
+    border: 1px solid #efefef;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px;
+    cursor: text;
+    word-spacing: 0;
+    &:focus {
+      box-shadow: 0 0 0 4px rgba(0,132,255,.5);
+      outline: 0;
+    }
+  }
+  button {
+    width: 100%;
+    height: 36px;
+    border: 0px;
+    border-radius: 4px;
+    outline: none;
+    background-color: #bd081c;
+    color: #fff;
+    cursor: pointer;
+    &:focus,
+    &:hover {
+      background-color: #d50c22
+    }
+  }
+}
+.pin-gender__tooltip {
+  margin: 0px 10px 0px 0px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 15px 0px;
+  input {
+    width: auto;
+    height: auto;
+    padding: 10px;
+    font-size: 12px;
+    &:focus {
+      box-shadow: none;
+    }
+  }
+  span {
+    vertical-align: middle;
+    text-align: center;
+    color: rgb(85, 85, 85);
+  }
+}

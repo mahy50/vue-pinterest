@@ -7,8 +7,41 @@
   &:active,
   &.active {
     background: $primary-color-light;
+    border: none;
     box-shadow: 0 0 0 4px rgba(0,132,255,.5);
     color: $primary-color;
     text-decoration: none;
+  }
+  &.btn-icon--save {
+    border-radius:4px;
+    background: #bd081c;
+    color: #fff;
+    vertical-align: middle;
+    &:hover,
+    &.hover {
+      background-color:#ad081b;
+    }
+  }
+  &.btn-icon--clear {
+    border-radius: 50%;
+    background-color: transparent;
+    color: #fff;
+    vertical-align: middle;
+    z-index: 100;
+    &:hover,
+    &.hover {
+      background-color:none;
+    }
+    &:focus,
+    &.focus {
+      box-shadow: none;
+    }
+    &:active,
+    &.active {
+      border: none;
+      box-shadow: 0 0 0 4px rgba(0,132,255,.5);
+      color: $primary-color;
+      text-decoration: none;
+    }
   }
 }

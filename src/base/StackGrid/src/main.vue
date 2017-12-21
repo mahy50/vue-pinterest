@@ -79,8 +79,8 @@ export default {
         right: 0,
         bottom: 0,
         display: 'block',
-        opacity: 1,
-        transition: 'all 480ms ease-out'
+        opacity: 1
+        // transition: 'all 480ms ease-out'
       }
       this.styleHelper(item.elm, styles)
     },
@@ -92,7 +92,7 @@ export default {
       heights[i] += Math.round(height) + gutterY
       return { top, left, width, height }
     },
-    genLayout (dataset) {
+    genLayout (dataset = []) {
       let columnHeights = Array(this.columnNum).fill(0)
       dataset.forEach((child, index) => {
         let rect = this.fillColumn(child, columnHeights, this.columnWidth, this.gutterX, this.gutterY)

@@ -1,4 +1,4 @@
-import StackGridComponent from './src/main'
+import StackGridComponent from './src/main.vue'
 
 const StackGrid = function () {}
 

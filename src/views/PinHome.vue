@@ -45,7 +45,7 @@ export default {
     return {
       dataset: [],
       page: 1,
-      pageSize: 20,
+      pageSize: 60,
       fade: false
     }
   },
@@ -90,7 +90,7 @@ export default {
         }
       }).then(res => {
         if (res.data.status === 0) {
-          this.dataset.push(...res.data.result)
+          this.dataset = res.data.result
           console.log(this.dataset)
         }
       })
