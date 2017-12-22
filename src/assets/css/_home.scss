@@ -5,7 +5,22 @@
 .pin-container {
   padding: 0;
 }
-
+.pin-create__button {
+  position: fixed;
+  right: 10px;
+  bottom: 50px;
+  width: 40px;
+  height: 40px;
+  line-height: 26px;
+  background-color: #fefefe;
+  box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.1), 0 0 0 0.5px rgba(0, 0, 0, 0.04);
+  z-index: 110;
+  cursor: pointer;
+  .pin-svg__icon {
+    width: 14px;
+    height: 14px;
+  }
+}
 /* content */
 .pin-card-item {
   display: block;

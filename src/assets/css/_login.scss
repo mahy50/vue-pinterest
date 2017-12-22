@@ -40,6 +40,26 @@
   border-radius: 8px;
   background-color: #fff;
 }
+.pin-login__button {
+  border: 0px;
+  height: 36px;
+  display: inline-block;
+  border-radius: 4px;
+  padding: 0 43px;
+  font-size: 15px;
+  font-weight: bold;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+  margin-top: 10px;
+  vertical-align: middle;
+  text-align: center;
+  background-color: #ebebeb;
+  color: #444;
+  position: absolute;
+  right: 25px;
+  top: 15px;
+}
 .pin-login__header {
   position: relative;
   width: 55px;

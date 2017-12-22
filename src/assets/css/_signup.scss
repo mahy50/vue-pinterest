@@ -9,6 +9,26 @@
 .pin-signup {
   height: 100vh;
 }
+.pin-signup__button {
+  border: 0px;
+  height: 36px;
+  display: inline-block;
+  border-radius: 4px;
+  padding: 0 43px;
+  font-size: 15px;
+  font-weight: bold;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+  margin-top: 10px;
+  vertical-align: middle;
+  text-align: center;
+  background-color: #ebebeb;
+  color: #444;
+  position: absolute;
+  right: 25px;
+  top: 15px;
+}
 .pin-signup__overlay {
   position: fixed;
   top: 0;

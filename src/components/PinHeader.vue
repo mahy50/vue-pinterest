@@ -18,11 +18,12 @@
       </div>
     </section>
     <section class="navbar-section navmenu pin-header__menu">
-      <router-link to="/" class="btn-icon btn-lg">Home</router-link>
+      <a class="btn-icon btn-lg" href="/">Home</a>
       <div class="btn-icon btn-lg">
         <div>
-          <img src="#" alt="" class="avatar avatar-sm" alt="">
-          username
+          <img v-if="image_small_url" :src="image_small_url" class="avatar avatar-sm" :alt="username">
+          <div v-else class="avatar avatar-sm"></div>
+          {{username}}
         </div>
       </div>
       <div class="dropdown">
@@ -50,7 +51,17 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
-
+  data () {
+    return {
+    }
+  },
+  computed: mapState({
+    username: state => state.user.username,
+    image_small_url: state => state.user.image_small_url
+  }),
+  mounted () {
+  }
 }
 </script>
