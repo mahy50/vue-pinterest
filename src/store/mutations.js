@@ -1,13 +1,16 @@
 import * as types from './types'
 
 export default {
-  [types.LOGIN]: (state, data) => {
-    state.user = Object.assign({}, data)
-  },
   [types.LOGOUT]: (state, data) => {
     state.user = null
   },
-  [types.USERUPDATE]: (state, data) => {
+  [types.UPDATEUSER]: (state, data) => {
     state.user = Object.assign({}, data)
+  },
+  [types.UPDATEPINS]: (state, data) => {
+    state.pins = [...state.pins, ...data]
+  },
+  [types.UPDATEPAGENUM]: (state, data) => {
+    state.page = data
   }
 }

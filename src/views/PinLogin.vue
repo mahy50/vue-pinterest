@@ -33,7 +33,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import * as types from './../store/types'
 
 export default {
@@ -45,15 +44,12 @@ export default {
   },
   methods: {
     login () {
-      axios.post('api/users/login', {
+      this.$store.dispatch(types.LOGIN, {
         email: this.email,
         password: this.password
-      }).then(res => {
-        if (res.data.status === 0) {
-          this.$store.commit(types.LOGIN, res.data.result)
-          let redirect = decodeURIComponent(this.$route.query.redirect || '/')
-          this.$router.push({path: redirect})
-        }
+      }).then(() => {
+        let redirect = decodeURIComponent(this.$route.query.redirect || '/')
+        this.$router.push({path: redirect})
       })
     }
   }

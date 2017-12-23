@@ -1,5 +1,5 @@
 <template>
-  <div class="pin-detail">
+  <div class="pin-detail" @click.self="goBack()">
         <div class="pin-detail__container">
           <header class="pin-detail__header">
             <div class="pin-detail__header-left">
@@ -57,36 +57,45 @@
             </button>
           </div>
         </div>
-
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import * as types from './../store/types'
 export default {
   data () {
     return {
-      id: '',
       pin: null
     }
   },
   methods: {
-    getPinById () {
-      this.id = this.$route.params.id
-      axios.get('api/pin/' + this.id).then(res => {
-        if (res.data.status === 0) {
-          this.pin = Object.assign({}, this.pin, res.data.result)
+    filterPin (collection, id) {
+      for (let key in collection) {
+        let item = collection[key]
+        if (item.id === id) {
+          return item
         }
+      }
+    },
+    getPinById () {
+      let id = this.$route.params.id
+      if (this.$store.state.pins) {
+        let tmp = this.filterPin(this.$store.state.pins, id)
+        if (tmp) {
+          this.pin = tmp
+          return
+        }
+      }
+      this.$store.dispatch(types.FETCHPINBYID, id).then(data => {
+        this.pin = Object.assign({}, data)
       })
     },
     goBack () {
       this.$router.push({path: '/'})
     }
   },
-  created () {
-    this.getPinById()
-  },
   mounted () {
+    this.getPinById()
   }
 }
 </script>

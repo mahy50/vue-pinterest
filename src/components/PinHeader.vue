@@ -26,18 +26,20 @@
           {{username}}
         </div>
       </div>
-      <div class="dropdown">
-        <a class="btn-icon btn-lg">
+      <div class="dropdown" :class="{active: showMenu_set}" >
+        <a class="btn-icon btn-lg" >
           <svg width="24" height="24" viewBox="0 0 16 16">
             <path fill="#B5B5B5" d="M15.33 9.5V13c0 1.66-1.34 3-3 3H3.67c-1.66 0-3-1.34-3-3V8L2.4 1.65c.16-.58.68-.98 1.29-.98h8.62c.61 0 1.13.4 1.29.98L15.33 8v1.5zm-10 1.83c-.36 0-.66.3-.66.67 0 .37.3.67.66.67h5.34c.36 0 .66-.3.66-.67 0-.37-.3-.67-.66-.67H5.33zM4.19 2.67l-1.52 5.6V9h10.66v-.73l-1.52-5.6H4.19z" data-reactid="81"></path>
           </svg>
         </a>
         <ul class="menu">
           <li>Setting</li>
+          <li @click="logout()">Logout</li>
         </ul>
       </div>
       <div class="dropdown">
-        <a class="btn-icon btn-lg  dropdown-toggle">
+        <a class="btn-icon btn-lg  dropdown-toggle"
+          @click="showMenu_set=!showMenu_set">
           <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path  fill="#B5B5B5" d="M12.00,9.00 C10.34,9.00 9.00,10.34 9.00,12.00 C9.00,13.66 10.34,15.00 12.00,15.00 C13.66,15.00 15.00,13.66 15.00,12.00 C15.00,10.34 13.66,9.00 12.00,9.00 M3.00,9.00 C4.66,9.00 6.00,10.34 6.00,12.00 C6.00,13.66 4.66,15.00 3.00,15.00 C1.34,15.00 0.00,13.66 0.00,12.00 C0.00,10.34 1.34,9.00 3.00,9.00 Z M21.00,9.00 C22.66,9.00 24.00,10.34 24.00,12.00 C24.00,13.66 22.66,15.00 21.00,15.00 C19.34,15.00 18.00,13.66 18.00,12.00 C18.00,10.34 19.34,9.00 21.00,9.00 Z" data-reactid="92"></path>
           </svg>
@@ -52,16 +54,25 @@
 
 <script>
 import { mapState } from 'vuex'
+import * as types from './../store/types'
 export default {
   data () {
     return {
+      showMenu_set: false,
+      showMenu_user: false,
+      showMenu_notifications: false
     }
   },
   computed: mapState({
-    username: state => state.user.username,
-    image_small_url: state => state.user.image_small_url
+    username: state => state.user && state.user.username,
+    image_small_url: state => state.user && state.user.image_small_url
   }),
-  mounted () {
+  methods: {
+    logout () {
+      this.$store.dispatch(types.LOGOUT).then(() => {
+        this.$router.push('/login')
+      })
+    }
   }
 }
 </script>

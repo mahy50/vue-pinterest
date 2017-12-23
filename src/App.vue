@@ -5,7 +5,11 @@
 </template>
 
 <script>
+import * as types from './store/types'
 export default {
-  name: 'app'
+  name: 'app',
+  created () {
+    this.$store.dispatch(types.GETPINS)
+  }
 }
 </script>

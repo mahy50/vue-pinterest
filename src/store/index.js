@@ -6,7 +6,10 @@ import actions from './actions'
 Vue.use(Vuex)
 
 const state = {
-  user: null
+  user: null,
+  pins: [],
+  page: 1,
+  pageSize: 20
 }
 
 export default new Vuex.Store({

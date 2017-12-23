@@ -6,6 +6,7 @@
   justify-content: center;
   background: #e5e5e5;
   min-height: 100vh;
+  cursor: zoom-out;
   &__container {
     max-width: 628px;
     background: #fff;
@@ -13,6 +14,7 @@
     margin: 32px auto;
     margin-top: 64px; // todo
     border-radius: 8px;
+    cursor: auto;
   }
   &__header {
     position: -webkit-sticky;

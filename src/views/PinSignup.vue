@@ -58,7 +58,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import * as types from './../store/types'
 export default {
   data () {
@@ -72,19 +71,15 @@ export default {
   },
   methods: {
     signup () {
-      axios.post('api/users/signup', {
+      let params = {
         email: this.email,
         username: this.username,
         password: this.password,
         age: parseInt(this.age),
         gender: this.gender
-      }).then(res => {
-        if (res.data.status === 0) {
-          this.$store.commit(types.LOGIN, res.data.result)
-          this.$router.push({path: '/'})
-        } else {
-          console.log('sign err', res.msg) // todo
-        }
+      }
+      this.$store.dispatch(types.SIGNUP, params).then(() => {
+        this.$router.push({path: '/'})
       })
     }
   }
