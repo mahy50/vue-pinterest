@@ -5,6 +5,9 @@
 .pin-container {
   padding: 0;
 }
+.stack-grid {
+  @include clearfix;
+}
 .pin-create__button {
   position: fixed;
   right: 10px;

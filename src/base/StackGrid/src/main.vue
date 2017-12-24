@@ -1,7 +1,7 @@
 <template>
-  <div class="stack-grid" ref="container">
+  <div class="stack-grid" ref="container" :style="{height: containerHeight + 'px'}">
       <div class="stack-grid-wrap"
-        :style="getWrapStyles()"
+        :style="getWrapStyles"
       >
       <slot></slot>
       </div>
@@ -37,6 +37,15 @@ export default {
   computed: {
     columnNum () {
       return Math.floor((this.containerWidth + this.gutterX) / (this.columnWidth + this.gutterX))
+    },
+    getWrapStyles () {
+      let width = (this.columnNum * this.columnWidth) + ((this.columnNum - 1) * this.gutterX)
+      let styles = {
+        width: width + 'px',
+        height: this.containerHeight + 'px'
+      }
+      console.log(styles)
+      return styles
     }
   },
   methods: {
@@ -46,14 +55,6 @@ export default {
       } else {
         return window ? window.document.clientWidth : 'auto'
       }
-    },
-    getWrapStyles () {
-      let width = (this.columnNum * this.columnWidth) + ((this.columnNum - 1) * this.gutterX)
-      let styles = {
-        width: width + 'px',
-        height: Math.max(...this.columnHeights) + 'px'
-      }
-      return styles
     },
     getItemHeight (child) {
       if (child.data.attrs) {
@@ -98,6 +99,7 @@ export default {
         let rect = this.fillColumn(child, columnHeights, this.columnWidth, this.gutterX, this.gutterY)
         this.setRect(child, rect)
       })
+      this.containerHeight = Math.max(...columnHeights)
     },
     init () {
       this.containerWidth = this.getContainerWidth()
@@ -118,15 +120,6 @@ export default {
   destroyed () {
     window.removeEventListener('resize', () => { this.init() })
   }
-  /**
-   * 数据驱动布局
-   * containerWidth => layout
-   * dataset => layout item
-   * 更新
-   * resize 更新 width
-   * slot 更新 => updated => init
-   *
-   */
 }
 </script>
 

@@ -23,11 +23,17 @@
   left: 0;
 }
 
-.btn-icon {
-  @extend .btn;
-  border-radius:24px;
-  border: none;
-  color: $primary-color;
-  margin: 0 8px;
+@mixin clearfix {
+  $selector: &;
+  @at-root {
+    #{$selector}::before,
+    #{$selector}::after {
+      display: table;
+      content: "";
+    }
+    #{$selector}::after {
+      clear: both
+    }
+  }
 }
 

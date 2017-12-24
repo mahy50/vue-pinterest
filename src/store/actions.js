@@ -3,7 +3,7 @@ import * as apis from './../api/apis'
 import axios from 'axios'
 export default {
   [types.GETPINS]: ({commit, state}) => {
-    axios.get(apis.GETPINS, {
+    return axios.get(apis.GETPINS, {
       params: {
         page: state.page,
         pageSize: state.pageSize
