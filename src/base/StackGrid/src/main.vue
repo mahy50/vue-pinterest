@@ -44,7 +44,6 @@ export default {
         width: width + 'px',
         height: this.containerHeight + 'px'
       }
-      console.log(styles)
       return styles
     }
   },

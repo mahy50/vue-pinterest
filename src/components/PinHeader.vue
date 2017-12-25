@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar pin-header">
+  <nav class="navbar pin-header" :style="styles">
     <section class="navbar-section pin-header__brand">
       <router-link class="btn-icon btn-lg" to="/">
         <svg height="24" width="24" viewBox="0 0 24 24">
@@ -18,26 +18,29 @@
       </div>
     </section>
     <section class="navbar-section navmenu pin-header__menu">
-      <a class="btn-icon btn-lg" href="/">Home</a>
-      <div class="btn-icon btn-lg">
+      <router-link class="btn-icon btn-lg" to="/">Home</router-link>
+      <router-link tag="div" to="/me" class="btn-icon btn-lg">
         <div>
           <img v-if="image_small_url" :src="image_small_url" class="avatar avatar-sm" :alt="username">
           <div v-else class="avatar avatar-sm"></div>
           {{username}}
         </div>
-      </div>
-      <div class="dropdown" :class="{active: showMenu_set}" >
-        <a class="btn-icon btn-lg" >
+      </router-link>
+      <div class="dropdown"  :class="{active: showMenu_notifications}">
+        <a class="btn-icon btn-lg   dropdown-toggle"
+          @click="showMenu_notifications=!showMenu_notifications">
           <svg width="24" height="24" viewBox="0 0 16 16">
             <path fill="#B5B5B5" d="M15.33 9.5V13c0 1.66-1.34 3-3 3H3.67c-1.66 0-3-1.34-3-3V8L2.4 1.65c.16-.58.68-.98 1.29-.98h8.62c.61 0 1.13.4 1.29.98L15.33 8v1.5zm-10 1.83c-.36 0-.66.3-.66.67 0 .37.3.67.66.67h5.34c.36 0 .66-.3.66-.67 0-.37-.3-.67-.66-.67H5.33zM4.19 2.67l-1.52 5.6V9h10.66v-.73l-1.52-5.6H4.19z" data-reactid="81"></path>
           </svg>
         </a>
         <ul class="menu">
           <li>Setting</li>
-          <li @click="logout()">Logout</li>
+          <li>Setting</li>
+          <li>Setting</li>
+          <li>Setting</li>
         </ul>
       </div>
-      <div class="dropdown">
+      <div class="dropdown" :class="{active: showMenu_set}">
         <a class="btn-icon btn-lg  dropdown-toggle"
           @click="showMenu_set=!showMenu_set">
           <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -46,6 +49,7 @@
         </a>
         <ul class="menu">
           <li>Setting</li>
+          <li @click="logout()">Logout</li>
         </ul>
       </div>
     </section>
@@ -63,10 +67,23 @@ export default {
       showMenu_notifications: false
     }
   },
-  computed: mapState({
-    username: state => state.user && state.user.username,
-    image_small_url: state => state.user && state.user.image_small_url
-  }),
+  props: {
+    sticky: {
+      type: Boolean,
+      default: false
+    }
+  },
+  computed: {
+    styles () {
+      return {
+        position: this.sticky ? 'sticky' : 'auto'
+      }
+    },
+    ...mapState({
+      username: state => state.user && state.user.username,
+      image_small_url: state => state.user && state.user.image_small_url
+    })
+  },
   methods: {
     logout () {
       this.$store.dispatch(types.LOGOUT).then(() => {

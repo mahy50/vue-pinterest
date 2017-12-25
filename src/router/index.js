@@ -2,10 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import store from './../store'
 import * as types from './../store/types'
-import PinHome from '@/views/PinHome.vue'
-import PinDetail from '@/views/PinDetail.vue'
-import PinLogin from '@/views/PinLogin.vue'
-import PinSignup from '@/views/PinSignup.vue'
+import PinHome from '@/views/PinHome'
+import PinDetail from '@/views/PinDetail'
+import PinLogin from '@/views/PinLogin'
+import PinSignup from '@/views/PinSignup'
+import PinUser from '@/views/PinUser'
 
 Vue.use(Router)
 
@@ -33,6 +34,13 @@ const router = new Router({
       path: '/signup',
       name: 'PinSignup',
       component: PinSignup
+    }, {
+      path: '/me',
+      name: 'PinUser',
+      meta: {
+        requireAuth: true
+      },
+      component: PinUser
     }
   ]
 })

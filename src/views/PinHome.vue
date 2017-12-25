@@ -11,28 +11,20 @@
         :gutterY="100"
         v-if="dataset"
       >
-          <router-link v-for="(item, index) in dataset" :key="index"
+        <!-- 需要传入height和background-color来占位 -->
+        <div v-for="(item, index) in dataset" :key="index"
             class="pin-card-item"
-            :height="item.images['236x'].height"
             :style="{backgroundColor: item.dominant_color}"
-            :to="'/pin/' + item.id"
-          >
-            <div class="pin-card__wrap" @mouseover="over(index)" @mouseout="out()">
-              <div class="pin-card__image-wrap" :class="{'is-fade': fade === index}">
-                <div class="pin-card__link">
-                  <img class="pin-card__image" :src="item.images['236x'].url" :alt="item.title" >
-                  <!--  -->
-                  <div class="pin-card__overlay">
-                    <div class="pin-card__overlay-dim"></div>
-                    <div class="pin-card__overlay-gradient"></div>
-                  </div>
-                </div>
+            :height="item.images['236x'].height">
+          <router-link :to="'/pin/' + item.id">
+            <pin-card :hasOverlay="true">
+              <div class="pin-card__content">
+                <img :src="item.images['236x'].url" :alt="item.title">
               </div>
-              <div class="pin-card__image-meta">
-                <span>{{limitStringWidth(item.description)}}</span>
-              </div>
-            </div>
+                <span slot="meta">{{limitStringWidth(item.description)}}</span>
+            </pin-card>
           </router-link>
+        </div>
       </stack-grid>
       <div class="loading"
         v-infinite-scroll="loadMore"
@@ -46,7 +38,8 @@
 
 <script>
 import infiniteScroll from 'vue-infinite-scroll'
-import PinHeader from '@/components/PinHeader.vue'
+import PinHeader from '@/components/PinHeader'
+import PinCard from '@/components/PinCard'
 import * as types from './../store/types'
 export default {
   data () {
@@ -62,23 +55,16 @@ export default {
     }
   },
   components: {
-    PinHeader
+    PinHeader,
+    PinCard
   },
   methods: {
-    getPins () {
-    },
     loadMore () {
       this.busy = true
       this.$store.dispatch(types.GETPINS).then(() => {
         console.log('object')
         this.busy = false
       })
-    },
-    over (index) {
-      this.fade = index
-    },
-    out () {
-      this.fade = false
     },
     getTextWidth (text, font) {
       var canvas = this.getTextWidth.canvas ||
@@ -99,6 +85,7 @@ export default {
     }
   },
   created () {
+    this.$store.dispatch(types.GETPINS)
   }
 }
 </script>

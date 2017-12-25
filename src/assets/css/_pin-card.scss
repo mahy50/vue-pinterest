@@ -1,0 +1,48 @@
+.pin-card {
+  position: relative;
+
+}
+.pin-card__wrap {
+  position: relative;
+  &:hover::after {
+    content: " ";
+    @include cover-block;
+    margin: -8px;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, .1);
+    overflow: hidden;
+    cursor: zoom-in;
+    pointer-events: none;
+  }
+  &:hover .pin-card__overlay {
+    display: block;
+  }
+}
+
+.pin-card__image-wrap {
+  position: relative;
+  .pin-card__overlay {
+    display: none;
+    @include cover-block;
+    overflow: hidden;
+  }
+  .pin-card__overlay-dim {
+    @include cover-block;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+  }
+  .pin-card__overlay-gradient {
+    @include cover-block;
+    top: auto;
+    height: 100px;
+    border-radius: 0 0 6px 6px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.5));
+  }
+}
+.pin-card__image {
+  display: block;
+  border-radius: 6px;
+  overflow: hidden;
+}

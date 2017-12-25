@@ -1,0 +1,60 @@
+@import './var.scss';
+@import './mixins.scss';
+
+.pin-user__header-wrapper {
+  display: flex;
+  align-items: center;
+  margin: 32px;
+  .pin-user__header-left {
+    flex: 3;
+  }
+  .pin-user__header-right {
+    flex: 1;
+    .pin-user__avatar {
+      // flex-basis: 100%;
+      // width: 100%;
+      // height: 100%;
+    }
+  }
+
+}
+.pin-user__profile-content {
+  margin: 32px;
+}
+.pin-user__pins {
+  display: flex;
+  flex-wrap: wrap;
+  .pin-card {
+    display: inline-block;
+    margin: 10px;
+    .pin-card__content {
+      margin-bottom: 5px;
+      border-radius: 6px;
+      width: 236px;
+      height: 236px;
+      overflow: hidden;
+    }
+  }
+  .pin-card--create {
+    .pin-card__content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .pin-card__create-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #fff;
+      .pin-svg__icon {
+        fill: #bd081c;
+      }
+    }
+    .pin-card__content {
+      background-color: $primary-color-light;
+    }
+    h5 {
+      color: $primary-color;
+    }
+  }
+}
