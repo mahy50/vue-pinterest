@@ -3,20 +3,45 @@
 
 .pin-user__header-wrapper {
   display: flex;
+  justify-content: center;
   align-items: center;
-  margin: 32px;
+  margin: 32px 10%;
   .pin-user__header-left {
-    flex: 3;
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    flex: 2;
+    h1 {
+      flex: 1;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .pin-user__follow,{
+      display: flex;
+      justify-content: center;
+      >div {
+        margin-left: 15%;
+      }
+    }
+    p {
+      margin-bottom: 0;
+    }
+    h6 {
+      color: $primary-color;
+    }
   }
   .pin-user__header-right {
     flex: 1;
+    max-width: 210px;
+    margin-right: 15%;
     .pin-user__avatar {
-      // flex-basis: 100%;
-      // width: 100%;
-      // height: 100%;
+      width: 100%;
+      padding-bottom: 100%;
+      height: 0;
+      background: $primary-color;
+      border-radius: 50%;
     }
   }
-
 }
 .pin-user__profile-content {
   margin: 32px;

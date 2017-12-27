@@ -21,6 +21,11 @@
     &.hover {
       background-color:#ad081b;
     }
+    &:disabled,
+    &.disabled {
+      background-color: $primary-color-light;
+      color: $primary-color
+    }
   }
   &.btn-icon--clear {
     border-radius: 50%;

@@ -52,5 +52,12 @@ export default {
       }
       return false
     })
+  },
+  [types.UPLOADFILE]: ({commit, state}, params) => {
+    return axios.post(apis.UPLOADFILE, params).then(res => {
+      if (res.data.status === 0) {
+        console.log('object')
+      }
+    })
   }
 }

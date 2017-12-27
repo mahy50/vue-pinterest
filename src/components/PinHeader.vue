@@ -76,7 +76,10 @@ export default {
   computed: {
     styles () {
       return {
-        position: this.sticky ? 'sticky' : 'auto'
+        position: this.sticky ? 'sticky' : 'auto',
+        top: 0,
+        backgroundColor: '#fff',
+        zIndex: 110
       }
     },
     ...mapState({
