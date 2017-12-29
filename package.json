@@ -17,6 +17,7 @@
     "materialize-css": "^0.100.2",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
+    "spark-md5": "^3.0.0",
     "spectre.css": "^0.5.0",
     "vue": "^2.5.2",
     "vue-infinite-scroll": "^2.0.2",

@@ -10,8 +10,14 @@ export default {
       }
     }).then(res => {
       if (res.data.status === 0) {
-        commit(types.UPDATEPAGENUM, ++state.page)
+        if (res.data.result.length > 0) {
+          commit(types.UPDATEPAGENUM, ++state.page)
+        } else {
+          commit(types.UPDATEPAGENUM, state.page)
+          return true
+        }
         commit(types.UPDATEPINS, res.data.result)
+        return false
       }
     })
   },
@@ -56,7 +62,9 @@ export default {
   [types.UPLOADFILE]: ({commit, state}, params) => {
     return axios.post(apis.UPLOADFILE, params).then(res => {
       if (res.data.status === 0) {
-        console.log('object')
+        return true
+      } else {
+        return false
       }
     })
   }

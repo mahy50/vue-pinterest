@@ -65,9 +65,13 @@ export default {
   methods: {
     loadMore () {
       this.busy = true
-      this.$store.dispatch(types.GETPINS).then(() => {
-        console.log('object')
-        this.busy = false
+      this.$store.dispatch(types.GETPINS).then((isEnd) => {
+        if (isEnd) {
+          this.busy = true
+          console.log('end')
+        } else {
+          this.busy = false
+        }
       })
     },
     getTextWidth (text, font) {
