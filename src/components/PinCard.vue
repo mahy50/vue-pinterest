@@ -4,7 +4,9 @@
       <div class="pin-card__image-wrap">
         <slot></slot>
         <div class="pin-card__overlay" v-if="hasOverlay">
-          <div class="pin-card__overlay-dim"></div>
+          <div class="pin-card__overlay-dim">
+            <slot name="group"></slot>
+          </div>
           <div class="pin-card__overlay-gradient"></div>
         </div>
       </div>
@@ -29,7 +31,7 @@ export default {
     },
     hasOverlay: {
       type: Boolean,
-      default: false
+      default: true
     }
   }
 }

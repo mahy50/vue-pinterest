@@ -45,7 +45,6 @@ export default {
   [types.LOGOUT]: ({commit, state}) => {
     return axios.get(apis.LOGOUT).then(res => {
       if (res.data.status === 0) {
-        console.log(res.data.result)
         commit(types.LOGOUT)
       }
     })
@@ -65,6 +64,13 @@ export default {
         return true
       } else {
         return false
+      }
+    })
+  },
+  [types.GETOWNPINS]: ({commit, state}) => {
+    return axios.get(apis.GETOWNPINS).then(res => {
+      if (res.data.status === 0) {
+        return res.data.result
       }
     })
   }

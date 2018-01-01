@@ -3,7 +3,7 @@
     <pin-header></pin-header>
     <div class="pin-content">
       <div class="btn-icon pin-create__button" @click="isActive = true">
-        <svg class="pin-svg__icon" height="14" width="14" viewBox="0 0 24 24" aria-hidden="true" aria-label="" role="img" data-reactid="833"><title data-reactid="834"></title><path d="M22.00,10.00 L14.00,10.00 L14.00,2.00 C14.00,0.90 13.10,0.00 12.00,0.00 C10.90,0.00 10.00,0.90 10.00,2.00 L10.00,10.00 L2.00,10.00 C0.90,10.00 0.00,10.90 0.00,12.00 C0.00,13.10 0.90,14.00 2.00,14.00 L10.00,14.00 L10.00,22.00 C10.00,23.10 10.90,24.00 12.00,24.00 C13.10,24.00 14.00,23.10 14.00,22.00 L14.00,14.00 L22.00,14.00 C23.10,14.00 24.00,13.10 24.00,12.00 C24.00,10.90 23.10,10.00 22.00,10.00" data-reactid="835"></path></svg>
+        <svg class="pin-svg__icon" height="14" width="14" viewBox="0 0 24 24" aria-hidden="true" aria-label="" role="img"><title></title><path d="M22.00,10.00 L14.00,10.00 L14.00,2.00 C14.00,0.90 13.10,0.00 12.00,0.00 C10.90,0.00 10.00,0.90 10.00,2.00 L10.00,10.00 L2.00,10.00 C0.90,10.00 0.00,10.90 0.00,12.00 C0.00,13.10 0.90,14.00 2.00,14.00 L10.00,14.00 L10.00,22.00 C10.00,23.10 10.90,24.00 12.00,24.00 C13.10,24.00 14.00,23.10 14.00,22.00 L14.00,14.00 L22.00,14.00 C23.10,14.00 24.00,13.10 24.00,12.00 C24.00,10.90 23.10,10.00 22.00,10.00"></path></svg>
       </div>
       <stack-grid
         :columnWidth="236"
@@ -16,7 +16,7 @@
             class="pin-card-item"
             :style="{backgroundColor: item.dominant_color}"
             :height="item.images['236x'].height">
-          <router-link :to="'/pin/' + item.id">
+          <router-link :to="'/pin/' + item._id">
             <pin-card :hasOverlay="true">
               <div class="pin-card__content">
                 <img :src="item.images['236x'].url" :alt="item.title">

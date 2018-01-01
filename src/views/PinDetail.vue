@@ -26,7 +26,7 @@
               <h2>{{pin.title}}</h2>
               </div>
             <div class="pin-detail__card">
-              <a><img :src="pin.images['236x'].url" :alt="pin.description"/></a>
+              <a><img :src="pin.images.origin.url" :alt="pin.description"/></a>
             </div>
             <div>
               <div class="pin-detail__user">
@@ -72,7 +72,7 @@ export default {
     filterPin (collection, id) {
       for (let key in collection) {
         let item = collection[key]
-        if (item.id === id) {
+        if (item._id === id) {
           return item
         }
       }
@@ -91,7 +91,7 @@ export default {
       })
     },
     goBack () {
-      this.$router.push({path: '/'})
+      this.$router.go(-1)
     }
   },
   mounted () {
