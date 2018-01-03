@@ -40,7 +40,7 @@
             </div>
             <h6 slot="meta">{{item.title}}</h6>
             <div slot="group">
-              <button class="btn-icon btn-icon--save" @click.stop.prevent="openModal"
+              <button class="btn-icon btn-icon--save" @click.stop.prevent="handleEdit(item)"
                 :style="{zIndex: 120, marginTop: '10px'}"
               >edit</button>
             </div>
@@ -49,16 +49,8 @@
       </div>
     </div>
     <pin-create :is-active.sync="isActive" ref="create"></pin-create>
-    <pin-modal :is-modal.sync="isModal" ref="create">
-      <header slot="header">
-        <h1> Edit this Pin </h1>
-        <button class="btn-icon">
-          <div class="pin-card__create-icon">
-            <svg class="pin-svg__icon" height="40" width="40" viewBox="0 0 24 24"><title></title><path d="M17.75,13.25 L13.25,13.25 L13.25,17.75 C13.25,18.44 12.69,19.00 12.00,19.00 C11.31,19.00 10.75,18.44 10.75,17.75 L10.75,13.25 L6.25,13.25 C5.56,13.25 5.00,12.69 5.00,12.00 C5.00,11.31 5.56,10.75 6.25,10.75 L10.75,10.75 L10.75,6.25 C10.75,5.56 11.31,5.00 12.00,5.00 C12.69,5.00 13.25,5.56 13.25,6.25 L13.25,10.75 L17.75,10.75 C18.44,10.75 19.00,11.31 19.00,12.00 C19.00,12.69 18.44,13.25 17.75,13.25 M12.00,0.00 C5.37,0.00 0.00,5.37 0.00,12.00 C0.00,18.63 5.37,24.00 12.00,24.00 C18.63,24.00 24.00,18.63 24.00,12.00 C24.00,5.37 18.63,0.00 12.00,0.00"></path></svg>
-          </div>
-        </button>
-      </header>
-    </pin-modal>
+    <pin-edit :is-active.sync="isEdit" :item="editItem">
+    </pin-edit>
   </div>
 </template>
 
@@ -68,33 +60,37 @@ import * as types from './../store/types'
 import PinHeader from './../components/PinHeader'
 import PinCard from './../components/PinCard'
 import PinCreate from './../components/PinCreate'
-import PinModal from './../components/PinModal'
+import PinEdit from './../components/PinEdit'
 export default {
   data () {
     return {
-      dataset: [],
       isActive: false,
-      isModal: false
+      isEdit: false,
+      editItem: {}
     }
   },
-  computed: mapState({
-    username: state => state.user && state.user.username,
-    image_small_url: state => state.user && state.user.image_small_url
-  }),
+  computed: {
+    ...mapState({
+      dataset: state => state.ownPins,
+      username: state => state.user && state.user.username,
+      image_small_url: state => state.user && state.user.image_small_url
+    })
+  },
   components: {
     PinHeader,
     PinCard,
     PinCreate,
-    PinModal
+    PinEdit
   },
   methods: {
     getOwnPins () {
       this.$store.dispatch(types.GETOWNPINS).then(data => {
-        this.dataset = data
+        // this.dataset = data
       })
     },
-    openModal () {
-      this.isModal = true
+    handleEdit (item) {
+      this.isEdit = true
+      this.editItem = item
     }
   },
   created () {

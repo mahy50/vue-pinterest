@@ -36,12 +36,17 @@
         </div>
         <div class="pin-create__content-right form-group">
           <!-- meta -->
-          <div class="website">
+          <div>
+            <label class="form-label">Title</label>
+            <input v-model="title" class="form-input add" type="text"
+              placeholder="Add the title of this Pin">
+          </div>
+          <div>
             <label class="form-label">Website</label>
             <input v-model="url" class="form-input add" type="text"
               placeholder="Add the URL this Pin links to">
           </div>
-          <div class="descripte">
+          <div>
             <label class="form-label">Description</label>
             <textarea v-model="description" class="form-input des" type="text"
               placeholder="Say more about this Pin"></textarea>
@@ -62,6 +67,7 @@ import * as types from './../store/types'
 export default {
   data () {
     return {
+      title: '',
       description: '',
       url: '',
       dataURL: '',
@@ -178,6 +184,7 @@ export default {
     },
     handleUpload () {
       this.$store.dispatch(types.UPLOADFILE, {
+        title: this.title,
         url: this.url,
         description: this.description,
         dataURL: this.dataURL,
@@ -188,10 +195,12 @@ export default {
           console.log('上传成功')
           this.dataURL = ''
           this.md5 = ''
+          this.title = ''
           this.url = ''
           this.description = ''
           this.uploaded = false
           this.dragover = false
+          this.$store.dispatch(types.GETOWNPINS)
           this.handleClose()
         } else {
           alert('上传失败')
@@ -216,7 +225,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-
-</style>

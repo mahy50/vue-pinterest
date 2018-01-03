@@ -30,7 +30,7 @@
         v-infinite-scroll="loadMore"
         infinite-scroll-disabled="busy"
         infinite-scroll-distance="100"
-        infinite-scroll-immediate-check="true"
+        infinite-scroll-listen-for-event="scroll"
       ></div>
     </div>
     <pin-create :is-active.sync="isActive"></pin-create>
@@ -64,13 +64,14 @@ export default {
   },
   methods: {
     loadMore () {
-      this.busy = true
-      this.$store.dispatch(types.GETPINS).then((isEnd) => {
-        if (isEnd) {
+      this.busy = false
+      this.$store.dispatch(types.GETPINS).then((hasMore) => {
+        console.log(hasMore)
+        if (hasMore) {
+          this.busy = false
+        } else {
           this.busy = true
           console.log('end')
-        } else {
-          this.busy = false
         }
       })
     },
@@ -90,10 +91,9 @@ export default {
         string = string.substr(0, len) + '…'
       }
       return string
+    },
+    mounted () {
     }
-  },
-  created () {
-    this.$store.dispatch(types.GETPINS)
   }
 }
 </script>

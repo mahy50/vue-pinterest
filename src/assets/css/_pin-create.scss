@@ -22,13 +22,14 @@
   border-radius: 8px;
   display: flex;
   flex-direction: column;
+  cursor: auto;
   .pin-create__header {
     position: relative;
     border-bottom: 1px solid #efefef;
+    text-align: center;
     h2 {
       padding: 20px 50px;
       margin: 0;
-      text-align: center;
     }
     .btn-icon {
       position: absolute;
@@ -38,8 +39,6 @@
       height: 40px;
       transform: translateY(-50%);
       padding: 8px;
-      // display: flex;
-      // justify-content: flex-end;
     }
   }
   .pin-create__content {
@@ -48,7 +47,6 @@
     padding: 20px;
     box-sizing: border-box;
     display: flex;
-    cursor: auto;
     &-left {
       display: flex;
       padding:  0 5%;

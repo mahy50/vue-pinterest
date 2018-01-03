@@ -26,13 +26,15 @@
               <h2>{{pin.title}}</h2>
               </div>
             <div class="pin-detail__card">
-              <a><img :src="pin.images.origin.url" :alt="pin.description"/></a>
+              <a><img :src="pin.images && pin.images.origin.url"
+                :alt="pin.description"/></a>
             </div>
             <div>
               <div class="pin-detail__user">
                 <div>
-                  <img :src="pin.pinner.image_small_url" :alt="pin.pinner.username" class="avatar">
-                  {{pin.pinner.username}}
+                  <img :src="pin.pinner && pin.pinner.image_small_url"
+                    :alt="pin.pinner && pin.pinner.username" class="avatar">
+                  {{pin.pinner && pin.pinner.username}}
                 </div>
                 <div>
                   <button class="btn-icon">like</button>

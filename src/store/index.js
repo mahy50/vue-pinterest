@@ -8,6 +8,7 @@ Vue.use(Vuex)
 const state = {
   user: null,
   pins: [],
+  ownPins: [],
   page: 1,
   pageSize: 20
 }

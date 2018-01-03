@@ -1,21 +1,4 @@
-<template>
-  <div class="pin-create" v-show="opened" @click.self="handleClose">
-    <div class="pin-create__container">
-      <header class="pin-create__header">
-        <slot name="header"></slot>
-      </header>
-      <div class="pin-create__content">
-        <slot name="content"></slot>
-      </div>
-      <div class="pin-create__footer">
-        <slot name="footer"></slot>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script>
-// import * as types from './../store/types'
 export default {
   data () {
     return {
@@ -24,7 +7,11 @@ export default {
     }
   },
   props: {
-    isModal: Boolean
+    isActive: Boolean,
+    hasClose: {
+      type: Boolean,
+      default: true
+    }
   },
   methods: {
     // 创建Pin弹窗
@@ -51,11 +38,11 @@ export default {
       this.stopBodyScroll(false)
     },
     handleClose () {
-      this.$emit('update:isModal', false)
+      this.$emit('update:isActive', false)
     }
   },
   watch: {
-    isModal (val) {
+    isActive (val) {
       if (val) {
         this.show()
       } else {
@@ -64,7 +51,7 @@ export default {
     }
   },
   beforeDestroy () {
-    this.$emit('update:isModal', false)
+    this.$emit('update:isActive', false)
   }
 }
 </script>

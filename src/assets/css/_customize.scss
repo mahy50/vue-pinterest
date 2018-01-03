@@ -1,3 +1,20 @@
+html {
+  overflow-y: scroll;
+}
+
+:root {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+:root body {
+  position: absolute;
+}
+
+body {
+  width: 100vw;
+  overflow: hidden;
+}
 .btn-icon {
   @extend .btn;
   border-radius:24px;
@@ -20,6 +37,19 @@
     &:hover,
     &.hover {
       background-color:#ad081b;
+    }
+    &:disabled,
+    &.disabled {
+      background-color: $primary-color-light;
+      color: $primary-color
+    }
+  }
+  &.btn-icon--rect {
+    border-radius:4px;
+    vertical-align: middle;
+    &:hover,
+    &.hover {
+      background-color: $primary-color-light;
     }
     &:disabled,
     &.disabled {

@@ -2,7 +2,6 @@
 export const UPDATEUSER = 'updateUser'
 export const UPDATEPINS = 'updatePins'
 export const UPDATEPAGENUM = 'updatePageNumber'
-
 // actions
 export const LOGIN = 'login'
 export const SIGNUP = 'signup'
@@ -12,3 +11,6 @@ export const GETPINS = 'getPins'
 export const FETCHPINBYID = 'fetchPinById'
 export const UPLOADFILE = 'uploadFile'
 export const GETOWNPINS = 'getOwnPins'
+export const DELPINBYID = 'deletePinById'
+export const SEARCHPINS = 'searchPins'
+export const UPDATEPINBYID = 'updatePinById'

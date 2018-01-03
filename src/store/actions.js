@@ -10,14 +10,13 @@ export default {
       }
     }).then(res => {
       if (res.data.status === 0) {
-        if (res.data.result.length > 0) {
-          commit(types.UPDATEPAGENUM, ++state.page)
-        } else {
-          commit(types.UPDATEPAGENUM, state.page)
-          return true
+        if (res.data.result.length < state.pageSize || res.data.result.length === 0) {
+          commit(types.UPDATEPINS, res.data.result)
+          return false
         }
+        commit(types.UPDATEPAGENUM, ++state.page)
         commit(types.UPDATEPINS, res.data.result)
-        return false
+        return true
       }
     })
   },
@@ -70,7 +69,43 @@ export default {
   [types.GETOWNPINS]: ({commit, state}) => {
     return axios.get(apis.GETOWNPINS).then(res => {
       if (res.data.status === 0) {
-        return res.data.result
+        state.ownPins = res.data.result
+      }
+    })
+  },
+  [types.DELPINBYID]: ({commit, state}, id) => {
+    return axios.delete(apis.DELPINBYID + '/' + id).then(res => {
+      if (res.data.status === 0) {
+        return true
+      } else {
+        return false
+      }
+    })
+  },
+  [types.UPDATEPINBYID]: ({commit, state}, data) => {
+    const { id, title, url, description } = data
+    return axios.post(apis.UPDATEPINBYID + '/' + id, {
+      title,
+      url,
+      description
+    }).then(res => {
+      if (res.data.status === 0) {
+        return true
+      } else {
+        return false
+      }
+    })
+  },
+  [types.SEARCHPINS]: ({commit, state}, search) => {
+    return axios.get(apis.SEARCHPINS, {
+      params: {
+        text: search
+      }
+    }).then(res => {
+      if (res.data.status === 0) {
+        return true
+      } else {
+        return false
       }
     })
   }
