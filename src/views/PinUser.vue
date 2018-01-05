@@ -84,9 +84,7 @@ export default {
   },
   methods: {
     getOwnPins () {
-      this.$store.dispatch(types.GETOWNPINS).then(data => {
-        // this.dataset = data
-      })
+      this.$store.dispatch(types.GETOWNPINS)
     },
     handleEdit (item) {
       this.isEdit = true
@@ -94,11 +92,7 @@ export default {
     }
   },
   created () {
-    // action
     this.getOwnPins()
-  },
-  mounted () {
-    // this.openModal()
   }
 }
 </script>

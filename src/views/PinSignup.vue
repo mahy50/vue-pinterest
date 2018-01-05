@@ -20,30 +20,30 @@
             </fieldset>
             <fieldset>
               <span>
-                <input type="password" id="password" name="password" v-model="password" placeholder="Create a password">
+                <input type="password" id="password" name="password" v-model="password" placeholder="Create a password" required>
               </span>
             </fieldset>
             <fieldset>
               <span>
-                <input type="text" id="username" name="username" v-model="username" placeholder="Full name">
+                <input type="text" id="username" name="username" v-model="username" placeholder="Full name" required>
               </span>
             </fieldset>
             <fieldset>
               <span>
-                <input type="text" id="age" name="age" v-model="age" placeholder="Age">
+                <input type="text" id="age" name="age" v-model="age" placeholder="Age" required>
               </span>
             </fieldset>
             <fieldset>
               <label class="pin-gender__tooltip">
-                <input type="radio" name="gender" value="male"  v-model="gender">
+                <input type="radio" name="gender" value="male"  v-model="gender" required>
                 <span>Male</span>
               </label>
               <label class="pin-gender__tooltip">
-                <input type="radio" name="gender" value="female"  v-model="gender">
+                <input type="radio" name="gender" value="female"  v-model="gender" required>
                 <span>Female</span>
               </label>
               <label class="pin-gender__tooltip">
-                <input type="radio" name="gender" value="custom"  v-model="gender">
+                <input type="radio" name="gender" value="custom"  v-model="gender" required>
                 <span>Custom</span>
               </label>
             </fieldset>
@@ -62,11 +62,11 @@ import * as types from './../store/types'
 export default {
   data () {
     return {
-      email: '934037783@qq.com',
-      username: 'mahy',
-      age: '18',
+      email: 'test@email.com',
+      username: 'test',
+      age: '28',
       gender: 'male',
-      password: 'bt321654'
+      password: 'test123456'
     }
   },
   methods: {

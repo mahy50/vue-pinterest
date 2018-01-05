@@ -11,18 +11,21 @@
       </div>
         <div class="pin-login__title">Log in to see more</div>
         <div class="pin-login__form">
-          <div @click="login()" >
+          <div>
             <fieldset style="position:relative;margin-bottom:7px;">
             <span>
-              <input type="email" id="email" name="id"  v-model="email" placeholder="Email">
+              <input type="email" id="email" name="id"  v-model="email" placeholder="Email" required>
             </span>
             </fieldset>
             <fieldset style="position:relative;">
               <span>
-                <input type="password" id="password" name="password" v-model="password" placeholder="Create a password">
+                <input type="password" id="password" name="password" required
+                  placeholder="Create a password"
+                  v-model="password"  @keyup.enter="login()"
+                >
               </span>
             </fieldset>
-            <button class="SignupButton active">
+            <button class="SignupButton active" @click="login()">
               <div>Log in</div>
             </button>
           </div>
@@ -38,8 +41,8 @@ import * as types from './../store/types'
 export default {
   data () {
     return {
-      email: '934037783@qq.com', // todo
-      password: 'bt321654'
+      email: 'test@email.com',
+      password: 'test123456'
     }
   },
   methods: {
@@ -52,6 +55,13 @@ export default {
         this.$router.push({path: redirect})
       })
     }
+  },
+  created () {
+    this.$store.dispatch(types.ISAUTH).then(isAuth => {
+      if (isAuth) {
+        this.$router.push('/')
+      }
+    })
   }
 }
 </script>
