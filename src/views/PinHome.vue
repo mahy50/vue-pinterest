@@ -29,7 +29,7 @@
         </div>
       </stack-grid>
     </div>
-     <infinite-loading @infinite="loadMore"></infinite-loading>
+     <infinite-loading @infinite="loadMore" spinner="waveDots"></infinite-loading>
     <pin-create :is-active.sync="isActive"></pin-create>
   </div>
 
@@ -63,18 +63,11 @@ export default {
   methods: {
     loadMore ($state) {
       this.$store.dispatch(types.GETPINS).then(hasMore => {
-        console.log(hasMore)
         if (hasMore) {
           $state.loaded()
+        } else {
+          $state.complete()
         }
-        // setTimeout(() => {
-        //   const temp = [];
-        //   for (let i = this.dataset.length + 1; i <= this.dataset.length + 20; i++) {
-        //     temp.push(i);
-        //   }
-        //   this.dataset = this.dataset.concat(temp);
-        //   $state.loaded();
-        // }, 1000);
       })
     },
     getTextWidth (text, font) {
