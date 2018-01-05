@@ -1,4 +1,6 @@
 <template>
+<keep-alive>
+
   <div class="pin-container">
     <pin-header></pin-header>
     <div class="pin-content">
@@ -26,19 +28,16 @@
           </router-link>
         </div>
       </stack-grid>
-      <div class="loading"
-        v-infinite-scroll="loadMore"
-        infinite-scroll-disabled="busy"
-        infinite-scroll-distance="100"
-        infinite-scroll-listen-for-event="scroll"
-      ></div>
     </div>
+     <infinite-loading @infinite="loadMore"></infinite-loading>
     <pin-create :is-active.sync="isActive"></pin-create>
   </div>
+
+</keep-alive>
 </template>
 
 <script>
-import infiniteScroll from 'vue-infinite-scroll'
+import infiniteLoading from 'vue-infinite-loading'
 import PinHeader from '@/components/PinHeader'
 import PinCard from '@/components/PinCard'
 import PinCreate from '@/components/PinCreate'
@@ -47,11 +46,9 @@ export default {
   data () {
     return {
       fade: false,
-      busy: false,
       isActive: false
     }
   },
-  directives: {infiniteScroll},
   computed: {
     dataset () {
       return this.$store.state.pins
@@ -60,19 +57,24 @@ export default {
   components: {
     PinHeader,
     PinCard,
-    PinCreate
+    PinCreate,
+    infiniteLoading
   },
   methods: {
-    loadMore () {
-      this.busy = false
-      this.$store.dispatch(types.GETPINS).then((hasMore) => {
+    loadMore ($state) {
+      this.$store.dispatch(types.GETPINS).then(hasMore => {
         console.log(hasMore)
         if (hasMore) {
-          this.busy = false
-        } else {
-          this.busy = true
-          console.log('end')
+          $state.loaded()
         }
+        // setTimeout(() => {
+        //   const temp = [];
+        //   for (let i = this.dataset.length + 1; i <= this.dataset.length + 20; i++) {
+        //     temp.push(i);
+        //   }
+        //   this.dataset = this.dataset.concat(temp);
+        //   $state.loaded();
+        // }, 1000);
       })
     },
     getTextWidth (text, font) {
@@ -91,9 +93,11 @@ export default {
         string = string.substr(0, len) + '…'
       }
       return string
-    },
-    mounted () {
     }
+  },
+  mounted () {
+    // 页面每次加载都会调用loadMore方法，所以先清除数据，避免重复
+    this.$store.commit(types.RESETDATA)
   }
 }
 </script>

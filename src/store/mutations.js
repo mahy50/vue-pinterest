@@ -15,5 +15,9 @@ export default {
   },
   [types.UPDATEPAGENUM]: (state, data) => {
     state.page = data
+  },
+  [types.RESETDATA]: (state, data) => {
+    state.page = 1
+    state.pins = []
   }
 }

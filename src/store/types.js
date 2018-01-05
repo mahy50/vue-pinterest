@@ -2,6 +2,7 @@
 export const UPDATEUSER = 'updateUser'
 export const UPDATEPINS = 'updatePins'
 export const UPDATEPAGENUM = 'updatePageNumber'
+export const RESETDATA = 'resetData'
 // actions
 export const LOGIN = 'login'
 export const SIGNUP = 'signup'

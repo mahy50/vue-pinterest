@@ -10,7 +10,7 @@ const state = {
   pins: [],
   ownPins: [],
   page: 1,
-  pageSize: 20
+  pageSize: 2
 }
 
 export default new Vuex.Store({

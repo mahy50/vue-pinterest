@@ -6516,9 +6516,9 @@ vue-hot-reload-api@^2.2.0:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.2.4.tgz#683bd1d026c0d3b3c937d5875679e9a87ec6cd8f"
 
-vue-infinite-scroll@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/vue-infinite-scroll/-/vue-infinite-scroll-2.0.2.tgz#ca37a91fe92ee0ad3b74acf8682c00917144b711"
+vue-infinite-loading@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/vue-infinite-loading/-/vue-infinite-loading-2.2.3.tgz#6912fcbe3fd44b97a555ab0b5a78b6100bd056c5"
 
 vue-jest@^1.0.2:
   version "1.4.0"
