@@ -1,0 +1,68 @@
+.pin-msg__box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 300;
+  .pin-msg__mask {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba($color: #000000, $alpha: 0.3)
+  }
+  .pin-msg__container {
+    position: relative;
+    min-width: 50%;
+    background-color: #fff;
+    border-radius: 8px;
+    z-index: 301;
+  }
+  .pin-msg__title {
+    text-align: center;
+    padding: 15px 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    .pin-svg-icon {
+      fill: #b5b5b5;
+    }
+  }
+  .pin-msg__content {
+    background-color: #fff;
+    min-width: 50%;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 20px 15px;
+    min-height: 36px;
+  }
+  .pin-msg__close {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 15px;
+    right: 10px;
+  }
+  .pin-msg__input {
+    border: 1px solid #dedede;
+    border-radius: 5px;
+    padding: 4px 5px;
+    width: 100%;
+    outline: none;
+  }
+  .pin-msg__btn-group {
+    display: flex;
+    justify-content: space-around;
+    padding: 5px 0;
+    button {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+}

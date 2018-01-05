@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import StackGrid from './base/StackGrid'
-import MessageBox from './base/MessageBox'
+import MessageBox from './components/MessageBox'
 
 import store from './store'
 import router from './router'
@@ -20,8 +20,5 @@ new Vue({
   router,
   store,
   template: '<App/>',
-  components: { App },
-  mounted () {
-    this.$message.show('aaa')
-  }
+  components: { App }
 })
