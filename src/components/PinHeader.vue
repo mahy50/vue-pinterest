@@ -92,9 +92,10 @@ export default {
     },
     logout () {
       this.showMenu = false
-      this.$store.dispatch(types.LOGOUT).then(() => {
-        this.$router.push('/login')
-      })
+      this.$store.dispatch(types.LOGOUT)
+        .then(() => {
+          this.$router.push('/login')
+        })
     },
     about () {
       this.showMenu = false

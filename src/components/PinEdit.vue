@@ -74,9 +74,9 @@ export default {
         title: this.title,
         url: this.url,
         description: this.description
-      }).then(result => {
+      }).then(() => {
         this.$store.dispatch(types.GETOWNPINS)
-        if (result) this.handleClose()
+        this.handleClose()
       })
     }
   }

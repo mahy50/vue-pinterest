@@ -88,7 +88,7 @@ export default {
           return
         }
       }
-      this.$store.dispatch(types.FETCHPINBYID, id).then(data => {
+      this.$store.dispatch(types.GETPINBYID, id).then(data => {
         this.pin = Object.assign({}, data)
       })
     },

@@ -183,7 +183,7 @@ export default {
       })
     },
     handleUpload () {
-      this.$store.dispatch(types.UPLOADFILE, {
+      this.$store.dispatch(types.CREATEPIN, {
         title: this.title,
         url: this.url,
         description: this.description,

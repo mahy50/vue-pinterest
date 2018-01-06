@@ -78,9 +78,10 @@ export default {
         age: parseInt(this.age),
         gender: this.gender
       }
-      this.$store.dispatch(types.SIGNUP, params).then(() => {
-        this.$router.push({path: '/'})
-      })
+      this.$store.dispatch(types.SIGNUP, params)
+        .then(() => {
+          this.$router.push({path: '/'})
+        })
     }
   }
 }

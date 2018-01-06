@@ -53,15 +53,18 @@ export default {
       }).then(() => {
         let redirect = decodeURIComponent(this.$route.query.redirect || '/')
         this.$router.push({path: redirect})
+      }).catch(() => {
+        alert('登陆失败，请检查用户名或密码')
       })
     }
   },
   created () {
-    this.$store.dispatch(types.ISAUTH).then(isAuth => {
-      if (isAuth) {
-        this.$router.push('/')
-      }
-    })
+    this.$store.dispatch(types.ISAUTH)
+      .then(isAuth => {
+        if (isAuth) {
+          this.$router.push('/')
+        }
+      })
   }
 }
 </script>

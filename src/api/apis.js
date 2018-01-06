@@ -1,14 +1,15 @@
+const baseURL = 'api/v1'
+
 // user
-export const LOGIN = 'api/users/login'
-export const SIGNUP = 'api/users/signup'
-export const ISAUTH = 'api/users/is_auth'
-export const LOGOUT = 'api/users/logout'
-export const UPLOADFILE = 'api/users/upload_file'
-export const GETOWNPINS = 'api/users/get_own_pins'
-export const DELPINBYID = 'api/users/delete_pin'
+export const LOGIN = `${baseURL}/user/login` // post
+export const SIGNUP = `${baseURL}/user/signup` // post
+export const LOGOUT = `${baseURL}/user/logout` // get
+export const ISAUTH = `${baseURL}/user/authenication`
+export const CREATEPIN = `${baseURL}/user/pin` // post
+export const GETOWNPINS = `${baseURL}/user/pins` // get
+export const DELPINBYID = `${baseURL}/user/pin/` // :id  delete
 
 // pins
-export const GETPINS = 'api/pins'
-export const FETCHPINBYID = 'api/pin/'
-export const UPDATEPINBYID = 'api/update_pin'
-export const SEARCHPINS = 'api/search_pins'
+export const GETPINS = `${baseURL}/pins` // get
+export const GETPINBYID = `${baseURL}/pin/` // :id get
+export const UPDATEPINBYID = `${baseURL}/pin/` // :id post
