@@ -10,8 +10,11 @@ export default {
   [types.UPDATEPINS]: (state, data) => {
     state.pins = [...state.pins, ...data]
   },
-  [types.SEARCHPINS]: (state, data) => {
-    state.pins = [...data]
+  // [types.SEARCHPINS]: (state, data) => {
+  //   state.pins = [...data]
+  // },
+  [types.SEARCHTEXT]: (state, text) => {
+    state.text = text || ''
   },
   [types.UPDATEPAGENUM]: (state, data) => {
     state.page = data

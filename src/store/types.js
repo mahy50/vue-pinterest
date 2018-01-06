@@ -3,6 +3,7 @@ export const UPDATEUSER = 'updateUser'
 export const UPDATEPINS = 'updatePins'
 export const UPDATEPAGENUM = 'updatePageNumber'
 export const RESETDATA = 'resetData'
+export const SEARCHTEXT = 'searchText'
 // actions
 export const LOGIN = 'login'
 export const SIGNUP = 'signup'

@@ -1,6 +1,4 @@
 <template>
-<keep-alive>
-
   <div class="pin-container">
     <pin-header></pin-header>
     <div class="pin-content">
@@ -29,11 +27,9 @@
         </div>
       </stack-grid>
     </div>
-     <infinite-loading @infinite="loadMore" spinner="waveDots"></infinite-loading>
+     <infinite-loading @infinite="loadMore" spinner="waveDots" ref="loading"></infinite-loading>
     <pin-create :is-active.sync="isActive"></pin-create>
   </div>
-
-</keep-alive>
 </template>
 
 <script>
@@ -63,6 +59,7 @@ export default {
   methods: {
     loadMore ($state) {
       this.$store.dispatch(types.GETPINS).then(hasMore => {
+        console.log('has more', hasMore)
         if (hasMore) {
           $state.loaded()
         } else {
@@ -86,6 +83,11 @@ export default {
         string = string.substr(0, len) + '…'
       }
       return string
+    }
+  },
+  watch: {
+    dataset (val) {
+      this.$refs.loading.$emit('$InfiniteLoading:reset')
     }
   },
   mounted () {

@@ -6,7 +6,8 @@ export default {
     return axios.get(apis.GETPINS, {
       params: {
         page: state.page,
-        pageSize: state.pageSize
+        pageSize: state.pageSize,
+        text: state.text || ''
       }
     }).then(res => {
       if (res.data.status === 0) {
@@ -103,6 +104,8 @@ export default {
       }
     }).then(res => {
       if (res.data.status === 0) {
+        commit(types.RESETDATA)
+        commit(types.UPDATEPINS, res.data.result)
         return true
       } else {
         return false

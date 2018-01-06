@@ -40,6 +40,7 @@ export default {
     },
     getWrapStyles () {
       let width = (this.columnNum * this.columnWidth) + ((this.columnNum - 1) * this.gutterX)
+      console.log(this.containerHeight)
       let styles = {
         width: width + 'px',
         height: this.containerHeight + 'px'
@@ -107,9 +108,7 @@ export default {
   },
   updated () {
     this.$nextTick(() => {
-      if (this.$slots.default) {
-        this.genLayout(this.$slots.default)
-      }
+      this.genLayout(this.$slots.default)
     })
   },
   mounted () {

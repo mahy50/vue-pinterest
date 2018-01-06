@@ -10,6 +10,7 @@ const state = {
   pins: [],
   ownPins: [],
   page: 1,
+  text: '',
   pageSize: 2
 }
 
