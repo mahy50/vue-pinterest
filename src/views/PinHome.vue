@@ -59,7 +59,7 @@ export default {
   methods: {
     loadMore ($state) {
       this.$store.dispatch(types.GETPINS).then(hasMore => {
-        console.log('has more', hasMore)
+        // console.log('has more', hasMore)
         if (hasMore) {
           $state.loaded()
         } else {

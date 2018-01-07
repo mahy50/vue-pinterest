@@ -11,7 +11,7 @@ const state = {
   ownPins: [],
   page: 1,
   text: '',
-  pageSize: 2
+  pageSize: 8
 }
 
 export default new Vuex.Store({
