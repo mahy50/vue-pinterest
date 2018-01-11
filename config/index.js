@@ -13,7 +13,7 @@ module.exports = {
     proxyTable: {
       // api代理，实现跨域
       '/api': {
-        target: 'http://localhost:3000',
+        target: 'http://api.pinterest.mahaoyuan.com',
         changeOrigin: true,
         autoRewrite: true,
         pathRewrite: {
@@ -21,7 +21,7 @@ module.exports = {
         }
       },
       '/images': {
-        target: 'http://localhost:3000',
+        target: 'http://api.pinterest.mahaoyuan.com',
         changeOrigin: true,
         autoRewrite: true
       }
