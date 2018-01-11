@@ -2,8 +2,6 @@ FROM nginx
 
 LABEL name="mahy50"
 
-RUN npm build
-
 # 删除默认nginx配置
 RUN rm /etc/nginx/conf.d/default.conf
 
