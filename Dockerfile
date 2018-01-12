@@ -14,4 +14,4 @@ ENV VIRTUAL_HOST=pinterest.mahaoyuan.com
 
 EXPOSE 80
 
-CMD [ "nginx" ]
+CMD [ "nginx", "-g", "daemon off;" ]
