@@ -12,4 +12,6 @@ COPY dist/ /usr/share/nginx/html/
 
 ENV VIRTUAL_HOST=pinterest.mahaoyuan.com
 
-EXPOSE 8080
+EXPOSE 80
+
+CMD [ "nginx" ]
