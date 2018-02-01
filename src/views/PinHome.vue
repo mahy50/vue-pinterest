@@ -8,17 +8,16 @@
       <stack-grid
         :columnWidth="236"
         :gutterX="24"
-        :gutterY="100"
+        :gutterY="80"
+        :easing="'easeOut'"
         v-if="dataset"
       >
         <!-- 需要传入height和background-color来占位 -->
-        <div v-for="(item, index) in dataset" :key="index"
-            class="pin-card-item"
-            :style="{backgroundColor: item.dominant_color}"
-            :height="item.images['236x'].height">
+        <div v-for="(item, index) in dataset" :key="index" class="pin-card-item">
           <router-link :to="'/pin/' + item._id">
             <pin-card :hasOverlay="true">
-              <div class="pin-card__content">
+              <div class="pin-card__content"
+                :style="{backgroundColor: item.dominant_color, height: item.images['236x'].height + 'px'}">
                 <img :src="item.images['236x'].url" :alt="item.title">
               </div>
                 <span slot="meta">{{limitStringWidth(item.description)}}</span>
@@ -37,6 +36,7 @@ import infiniteLoading from 'vue-infinite-loading'
 import PinHeader from '@/components/PinHeader'
 import PinCard from '@/components/PinCard'
 import PinCreate from '@/components/PinCreate'
+import StackGrid from '../../node_modules/vue-stack-grid-component/src/index'
 import * as types from './../store/types'
 export default {
   data () {
@@ -54,7 +54,8 @@ export default {
     PinHeader,
     PinCard,
     PinCreate,
-    infiniteLoading
+    infiniteLoading,
+    StackGrid: StackGrid
   },
   methods: {
     loadMore ($state) {

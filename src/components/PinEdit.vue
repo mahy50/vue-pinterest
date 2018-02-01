@@ -60,24 +60,34 @@ export default {
   mixins: [PinModal],
   methods: {
     handleDel () {
-      if (window.confirm('Are you sure?')) {
-        this.$store.dispatch(types.DELPINBYID, this.id).then(result => {
-          this.$store.dispatch(types.GETOWNPINS)
-          if (result) this.handleClose()
-        })
-      }
+      this.$message.show({
+        content: 'Once you delete a Pin, you can\'t undo it!',
+        title: 'Are you sure?',
+        confirmBtnText: 'Delete Pin'
+      })
+      .then(() => {
+        this.$store.dispatch(types.DELPINBYID, this.id)
+          .then(result => {
+            this.$store.dispatch(types.GETOWNPINS)
+            if (result) this.handleClose()
+          })
+          .catch(err => { console.log(err) })
+      })
+      .catch(err => { console.log(err) })
     },
     handleUpdate () {
-      console.log(this.$store.dispatch)
       this.$store.dispatch(types.UPDATEPINBYID, {
         id: this.id,
         title: this.title,
         url: this.url,
         description: this.description
-      }).then(() => {
+      })
+      .then(() => {
         this.$store.dispatch(types.GETOWNPINS)
+        this.$store.dispatch(types.GETPINS)
         this.handleClose()
       })
+      .catch(err => { console.log(err) })
     }
   }
 }

@@ -32,9 +32,10 @@
             <div>
               <div class="pin-detail__user">
                 <div>
-                  <img :src="pin.pinner && pin.pinner.image_small_url"
-                    :alt="pin.pinner && pin.pinner.username" class="avatar">
-                  {{pin.pinner && pin.pinner.username}}
+                  <img :src="pin.pinner.image_small_url" v-if="pin.pinner.image_small_url"
+                    :alt="pin.pinner.username" class="avatar">
+                  <div v-else class="avatar"></div>
+                  {{pin.pinner.username}}
                 </div>
                 <div>
                   <button class="btn-icon">like</button>

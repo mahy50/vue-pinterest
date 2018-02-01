@@ -190,9 +190,13 @@ export default {
         dataURL: this.dataURL,
         md5: this.md5
       }).then(status => {
-        // todo 显示上传状态
+        this.$message.show({
+          showConfirmBtn: false,
+          showCancelBtn: false,
+          content: 'Upload successfully',
+          title: 'Upload'
+        }).catch(err => { console.log(err) })
         if (status) {
-          console.log('上传成功')
           this.dataURL = ''
           this.md5 = ''
           this.title = ''
@@ -203,7 +207,12 @@ export default {
           this.$store.dispatch(types.GETOWNPINS)
           this.handleClose()
         } else {
-          alert('上传失败')
+          this.$message.show({
+            showConfirmBtn: false,
+            showCancelBtn: false,
+            content: 'Upload failed',
+            title: 'Upload'
+          }).catch(err => { console.log(err) })
         }
       })
     }

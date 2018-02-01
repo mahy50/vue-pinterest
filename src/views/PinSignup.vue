@@ -81,6 +81,12 @@ export default {
       this.$store.dispatch(types.SIGNUP, params)
         .then(() => {
           this.$router.push({path: '/'})
+        }).catch(err => {
+          this.$message.show({
+            title: 'Notification',
+            content: err.response.data,
+            showCancelBtn: false
+          }).catch(() => {})
         })
     }
   }

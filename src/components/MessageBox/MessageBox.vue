@@ -15,7 +15,7 @@
       </div>
       <div class="pin-msg__btn-group">
         <button class="pin-msg__btn--cancel btn-icon btn-icon--rect" @click="cancel" v-show="showCancelBtn">{{cancelBtnText}}</button>
-        <button class="pin-msg__btn--confirm btn-icon btn-icon--save" @click="confirm" v-show="showConfirmBtn">{{confirmBtnText}}</button>
+        <button class="pin-msg__btn--confirm btn-icon btn-icon--rect" @click="confirm" v-show="showConfirmBtn">{{confirmBtnText}}</button>
       </div>
     </div>
   </div>
@@ -33,13 +33,13 @@ export default {
     }
   },
   props: {
-    title: {type: String, default: 'Title'},
+    title: {type: String, default: 'Confirm'},
     content: {type: String, default: 'Are you sure do this ?'},
     showConfirmBtn: {type: Boolean, default: true},
     showCancelBtn: {type: Boolean, default: true},
     showInput: {type: Boolean, default: false},
-    confirmBtnText: {type: String, default: '确认'},
-    cancelBtnText: {type: String, default: '取消'},
+    confirmBtnText: {type: String, default: 'Confirm'},
+    cancelBtnText: {type: String, default: 'Cancel'},
     placeholder: {type: String}
   },
   methods: {
@@ -69,7 +69,7 @@ export default {
     cancel () {
       this.visibled = false
       this.stopBodyScroll(false)
-      this.reject('cancel')
+      this.reject('cancel!')
       this.remove()
     },
     confirm () {
